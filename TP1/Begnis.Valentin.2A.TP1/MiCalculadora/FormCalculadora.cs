@@ -116,25 +116,13 @@ namespace MiCalculadora
         }
 
         /// <summary>
-        /// Al presionar el boton btnCerrar, muestro un modal al usuario preguntando si en verdad
-        /// desea salir de la aplicacion. Si presiona "Sí" se cerrara la calculadora. Si presiona "No",
-        /// se cierra el modal y continua la ejecucion del programa
+        /// Al presionar el boton btnCerrar termina la ejecucion de programa
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            string mensaje = "¿Está seguro de querer salir?";
-            string titulo = "Salir";
-            MessageBoxButtons opciones = MessageBoxButtons.YesNo;
-            MessageBoxIcon icono = MessageBoxIcon.Question;
-
-            DialogResult opcionElegida = MessageBox.Show(mensaje, titulo, opciones, icono);
-
-            if (opcionElegida == DialogResult.Yes)
-            {
-                this.Close();
-            }
+            this.Close();
         }
 
         /// <summary>
@@ -161,6 +149,28 @@ namespace MiCalculadora
         {
             Operando operando = new Operando(this.lblResultado.Text);
             this.lblResultado.Text = operando.BinarioDecimal(this.lblResultado.Text);
+        }
+
+        /// <summary>
+        /// Al querer salir de la aplicacion muestro un modal al usuario preguntando si en verdad
+        /// desea salir de la aplicacion. Si presiona "Sí" se cerrara la calculadora. Si presiona "No",
+        /// se cierra el modal y continua la ejecucion del programa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FormCalculadora_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            string mensaje = "¿Está seguro de querer salir?";
+            string titulo = "Salir";
+            MessageBoxButtons opciones = MessageBoxButtons.YesNo;
+            MessageBoxIcon icono = MessageBoxIcon.Question;
+
+            DialogResult opcionElegida = MessageBox.Show(mensaje, titulo, opciones, icono);
+
+            if (opcionElegida == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
