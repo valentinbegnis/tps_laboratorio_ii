@@ -72,7 +72,14 @@ namespace TP4
 
                     try
                     {
-                        conexion.EliminarLibro(libroEncontrado.Codigo);
+                        if (conexion.ProbarConexion())
+                        {
+                            conexion.EliminarLibro(libroEncontrado.Codigo);
+                        }
+                        else
+                        {
+                            SerializadorJson<List<Libro>>.Escribir(this.formMenuPrincipal.listaDeLibros, "Serializado_Libros");
+                        }
                     }
                     catch(Exception ex)
                     {

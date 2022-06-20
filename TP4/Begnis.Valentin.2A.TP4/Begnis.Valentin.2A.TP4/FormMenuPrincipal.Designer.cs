@@ -43,13 +43,8 @@ namespace TP4
             this.btn_agregarCliente = new System.Windows.Forms.Button();
             this.btn_modificarCliente = new System.Windows.Forms.Button();
             this.btn_generarCompra = new System.Windows.Forms.Button();
-            this.menu_Ordenar = new System.Windows.Forms.MenuStrip();
-            this.ordenarPorAutorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.porAutorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.porTituloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.porPrecioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lbl_ordenando = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.menu_Ordenar.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbl_libros
@@ -58,7 +53,7 @@ namespace TP4
             this.lbl_libros.BackColor = System.Drawing.Color.Transparent;
             this.lbl_libros.Font = new System.Drawing.Font("Sitka Subheading", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_libros.ForeColor = System.Drawing.Color.MistyRose;
-            this.lbl_libros.Location = new System.Drawing.Point(13, 134);
+            this.lbl_libros.Location = new System.Drawing.Point(13, 112);
             this.lbl_libros.Name = "lbl_libros";
             this.lbl_libros.Size = new System.Drawing.Size(57, 23);
             this.lbl_libros.TabIndex = 5;
@@ -70,7 +65,7 @@ namespace TP4
             this.btn_salir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_salir.Font = new System.Drawing.Font("Sitka Small", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.btn_salir.ForeColor = System.Drawing.Color.MistyRose;
-            this.btn_salir.Location = new System.Drawing.Point(658, 559);
+            this.btn_salir.Location = new System.Drawing.Point(658, 529);
             this.btn_salir.Name = "btn_salir";
             this.btn_salir.Size = new System.Drawing.Size(110, 41);
             this.btn_salir.TabIndex = 13;
@@ -84,7 +79,7 @@ namespace TP4
             this.rtb_libros.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.rtb_libros.Cursor = System.Windows.Forms.Cursors.Default;
             this.rtb_libros.Font = new System.Drawing.Font("Sitka Small", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rtb_libros.Location = new System.Drawing.Point(12, 160);
+            this.rtb_libros.Location = new System.Drawing.Point(13, 138);
             this.rtb_libros.Name = "rtb_libros";
             this.rtb_libros.ReadOnly = true;
             this.rtb_libros.Size = new System.Drawing.Size(345, 302);
@@ -97,7 +92,7 @@ namespace TP4
             this.btn_agregarLibro.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_agregarLibro.Font = new System.Drawing.Font("Sitka Small", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_agregarLibro.ForeColor = System.Drawing.Color.Maroon;
-            this.btn_agregarLibro.Location = new System.Drawing.Point(12, 468);
+            this.btn_agregarLibro.Location = new System.Drawing.Point(12, 446);
             this.btn_agregarLibro.Name = "btn_agregarLibro";
             this.btn_agregarLibro.Size = new System.Drawing.Size(111, 55);
             this.btn_agregarLibro.TabIndex = 15;
@@ -112,7 +107,7 @@ namespace TP4
             this.lbl_nombreLibreria.Font = new System.Drawing.Font("Sitka Heading", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.lbl_nombreLibreria.ForeColor = System.Drawing.Color.LightSalmon;
             this.lbl_nombreLibreria.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.lbl_nombreLibreria.Location = new System.Drawing.Point(80, 56);
+            this.lbl_nombreLibreria.Location = new System.Drawing.Point(80, 34);
             this.lbl_nombreLibreria.Name = "lbl_nombreLibreria";
             this.lbl_nombreLibreria.Size = new System.Drawing.Size(356, 50);
             this.lbl_nombreLibreria.TabIndex = 16;
@@ -123,7 +118,7 @@ namespace TP4
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::TP4.Properties.Resources.owl_64px;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 40);
+            this.pictureBox1.Location = new System.Drawing.Point(13, 18);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 66);
             this.pictureBox1.TabIndex = 17;
@@ -135,7 +130,7 @@ namespace TP4
             this.btn_modificarLibro.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_modificarLibro.Font = new System.Drawing.Font("Sitka Small", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_modificarLibro.ForeColor = System.Drawing.Color.Maroon;
-            this.btn_modificarLibro.Location = new System.Drawing.Point(129, 468);
+            this.btn_modificarLibro.Location = new System.Drawing.Point(129, 446);
             this.btn_modificarLibro.Name = "btn_modificarLibro";
             this.btn_modificarLibro.Size = new System.Drawing.Size(111, 55);
             this.btn_modificarLibro.TabIndex = 18;
@@ -149,7 +144,7 @@ namespace TP4
             this.btn_eliminarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_eliminarCliente.Font = new System.Drawing.Font("Sitka Small", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_eliminarCliente.ForeColor = System.Drawing.Color.Maroon;
-            this.btn_eliminarCliente.Location = new System.Drawing.Point(246, 468);
+            this.btn_eliminarCliente.Location = new System.Drawing.Point(246, 446);
             this.btn_eliminarCliente.Name = "btn_eliminarCliente";
             this.btn_eliminarCliente.Size = new System.Drawing.Size(111, 55);
             this.btn_eliminarCliente.TabIndex = 19;
@@ -164,7 +159,7 @@ namespace TP4
             this.label1.Font = new System.Drawing.Font("Sitka Heading", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.LightSalmon;
             this.label1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.label1.Location = new System.Drawing.Point(90, 38);
+            this.label1.Location = new System.Drawing.Point(90, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 35);
             this.label1.TabIndex = 20;
@@ -176,7 +171,7 @@ namespace TP4
             this.rtb_clientes.BackColor = System.Drawing.Color.MistyRose;
             this.rtb_clientes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.rtb_clientes.Font = new System.Drawing.Font("Sitka Small", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rtb_clientes.Location = new System.Drawing.Point(423, 160);
+            this.rtb_clientes.Location = new System.Drawing.Point(423, 138);
             this.rtb_clientes.Name = "rtb_clientes";
             this.rtb_clientes.ReadOnly = true;
             this.rtb_clientes.Size = new System.Drawing.Size(345, 302);
@@ -189,7 +184,7 @@ namespace TP4
             this.lbl_clientes.BackColor = System.Drawing.Color.Transparent;
             this.lbl_clientes.Font = new System.Drawing.Font("Sitka Subheading", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_clientes.ForeColor = System.Drawing.Color.MistyRose;
-            this.lbl_clientes.Location = new System.Drawing.Point(423, 134);
+            this.lbl_clientes.Location = new System.Drawing.Point(423, 112);
             this.lbl_clientes.Name = "lbl_clientes";
             this.lbl_clientes.Size = new System.Drawing.Size(225, 23);
             this.lbl_clientes.TabIndex = 23;
@@ -201,7 +196,7 @@ namespace TP4
             this.btn_agregarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_agregarCliente.Font = new System.Drawing.Font("Sitka Small", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_agregarCliente.ForeColor = System.Drawing.Color.Maroon;
-            this.btn_agregarCliente.Location = new System.Drawing.Point(423, 468);
+            this.btn_agregarCliente.Location = new System.Drawing.Point(423, 446);
             this.btn_agregarCliente.Name = "btn_agregarCliente";
             this.btn_agregarCliente.Size = new System.Drawing.Size(110, 55);
             this.btn_agregarCliente.TabIndex = 24;
@@ -215,7 +210,7 @@ namespace TP4
             this.btn_modificarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_modificarCliente.Font = new System.Drawing.Font("Sitka Small", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_modificarCliente.ForeColor = System.Drawing.Color.Maroon;
-            this.btn_modificarCliente.Location = new System.Drawing.Point(540, 468);
+            this.btn_modificarCliente.Location = new System.Drawing.Point(540, 446);
             this.btn_modificarCliente.Name = "btn_modificarCliente";
             this.btn_modificarCliente.Size = new System.Drawing.Size(111, 55);
             this.btn_modificarCliente.TabIndex = 25;
@@ -229,7 +224,7 @@ namespace TP4
             this.btn_generarCompra.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_generarCompra.Font = new System.Drawing.Font("Sitka Small", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_generarCompra.ForeColor = System.Drawing.Color.Maroon;
-            this.btn_generarCompra.Location = new System.Drawing.Point(658, 468);
+            this.btn_generarCompra.Location = new System.Drawing.Point(658, 446);
             this.btn_generarCompra.Name = "btn_generarCompra";
             this.btn_generarCompra.Size = new System.Drawing.Size(110, 55);
             this.btn_generarCompra.TabIndex = 26;
@@ -237,61 +232,25 @@ namespace TP4
             this.btn_generarCompra.UseVisualStyleBackColor = false;
             this.btn_generarCompra.Click += new System.EventHandler(this.btn_generarCompra_Click);
             // 
-            // menu_Ordenar
+            // lbl_ordenando
             // 
-            this.menu_Ordenar.BackColor = System.Drawing.Color.LightSalmon;
-            this.menu_Ordenar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ordenarPorAutorToolStripMenuItem});
-            this.menu_Ordenar.Location = new System.Drawing.Point(0, 0);
-            this.menu_Ordenar.Name = "menu_Ordenar";
-            this.menu_Ordenar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.menu_Ordenar.Size = new System.Drawing.Size(781, 29);
-            this.menu_Ordenar.TabIndex = 28;
-            this.menu_Ordenar.Text = "menuStrip1";
-            // 
-            // ordenarPorAutorToolStripMenuItem
-            // 
-            this.ordenarPorAutorToolStripMenuItem.BackColor = System.Drawing.Color.LightSalmon;
-            this.ordenarPorAutorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.porAutorToolStripMenuItem,
-            this.porTituloToolStripMenuItem,
-            this.porPrecioToolStripMenuItem});
-            this.ordenarPorAutorToolStripMenuItem.Font = new System.Drawing.Font("Sitka Subheading", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ordenarPorAutorToolStripMenuItem.Name = "ordenarPorAutorToolStripMenuItem";
-            this.ordenarPorAutorToolStripMenuItem.Size = new System.Drawing.Size(125, 25);
-            this.ordenarPorAutorToolStripMenuItem.Text = "Ordenar libros";
-            // 
-            // porAutorToolStripMenuItem
-            // 
-            this.porAutorToolStripMenuItem.BackColor = System.Drawing.Color.LightSalmon;
-            this.porAutorToolStripMenuItem.Name = "porAutorToolStripMenuItem";
-            this.porAutorToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
-            this.porAutorToolStripMenuItem.Text = "por autor";
-            this.porAutorToolStripMenuItem.Click += new System.EventHandler(this.porAutorToolStripMenuItem_Click);
-            // 
-            // porTituloToolStripMenuItem
-            // 
-            this.porTituloToolStripMenuItem.BackColor = System.Drawing.Color.LightSalmon;
-            this.porTituloToolStripMenuItem.Name = "porTituloToolStripMenuItem";
-            this.porTituloToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
-            this.porTituloToolStripMenuItem.Text = "por titulo";
-            this.porTituloToolStripMenuItem.Click += new System.EventHandler(this.porTituloToolStripMenuItem_Click);
-            // 
-            // porPrecioToolStripMenuItem
-            // 
-            this.porPrecioToolStripMenuItem.BackColor = System.Drawing.Color.LightSalmon;
-            this.porPrecioToolStripMenuItem.Name = "porPrecioToolStripMenuItem";
-            this.porPrecioToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
-            this.porPrecioToolStripMenuItem.Text = "por precio";
-            this.porPrecioToolStripMenuItem.Click += new System.EventHandler(this.porPrecioToolStripMenuItem_Click);
+            this.lbl_ordenando.AutoSize = true;
+            this.lbl_ordenando.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_ordenando.Font = new System.Drawing.Font("Sitka Subheading", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_ordenando.ForeColor = System.Drawing.Color.MistyRose;
+            this.lbl_ordenando.Location = new System.Drawing.Point(67, 112);
+            this.lbl_ordenando.Name = "lbl_ordenando";
+            this.lbl_ordenando.Size = new System.Drawing.Size(0, 23);
+            this.lbl_ordenando.TabIndex = 29;
             // 
             // form_menuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::TP4.Properties.Resources.imagen_biblioteca;
-            this.ClientSize = new System.Drawing.Size(781, 616);
+            this.ClientSize = new System.Drawing.Size(781, 594);
             this.ControlBox = false;
+            this.Controls.Add(this.lbl_ordenando);
             this.Controls.Add(this.btn_generarCompra);
             this.Controls.Add(this.btn_modificarCliente);
             this.Controls.Add(this.btn_agregarCliente);
@@ -306,9 +265,7 @@ namespace TP4
             this.Controls.Add(this.rtb_libros);
             this.Controls.Add(this.btn_salir);
             this.Controls.Add(this.lbl_libros);
-            this.Controls.Add(this.menu_Ordenar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MainMenuStrip = this.menu_Ordenar;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "form_menuPrincipal";
@@ -316,8 +273,6 @@ namespace TP4
             this.Text = "Menú principal";
             this.Load += new System.EventHandler(this.form_menuPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.menu_Ordenar.ResumeLayout(false);
-            this.menu_Ordenar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -338,11 +293,7 @@ namespace TP4
         private System.Windows.Forms.Button btn_agregarCliente;
         private System.Windows.Forms.Button btn_modificarCliente;
         private System.Windows.Forms.Button btn_generarCompra;
-        private System.Windows.Forms.MenuStrip menu_Ordenar;
-        private System.Windows.Forms.ToolStripMenuItem ordenarPorAutorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem porAutorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem porTituloToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem porPrecioToolStripMenuItem;
+        private System.Windows.Forms.Label lbl_ordenando;
     }
 }
 

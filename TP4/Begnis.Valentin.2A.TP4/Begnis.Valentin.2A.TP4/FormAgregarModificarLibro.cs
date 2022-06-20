@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,6 +16,9 @@ namespace TP4
     {
         private form_menuPrincipal formMenuPrincipal;
         private Libro libro;
+
+        private delegate int DelegadoOrdenarPorPrecio(float x, float y);
+        DelegadoOrdenarPorPrecio delegadoOrdenarPorPrecio = CriterioOrdenamiento.OrdenarMenorAMayor;
 
         public form_agregarModificarLibro(form_menuPrincipal formMenuPrincipal, Libro libro)
             : this(formMenuPrincipal)
@@ -33,6 +37,24 @@ namespace TP4
             if (this.libro is not null)
             {
                 this.CargarDatosDeLibro(this.libro);
+            }
+
+            this.btn_aceptar.Click += new EventHandler(OrdenarLista);
+        }
+
+        private async void OrdenarLista(object sender, EventArgs e)
+        {
+            if (delegadoOrdenarPorPrecio is not null)
+            {
+                this.formMenuPrincipal.labelOrdenando.Text = "(Ordenando...)";
+
+                await Task.Run(() => {
+                    // Thread.Sleep(2000); 
+                    this.formMenuPrincipal.listaDeLibros.Sort((x, y) => delegadoOrdenarPorPrecio(x.Precio, y.Precio));
+                });
+
+                this.formMenuPrincipal.labelOrdenando.Text = "";
+                this.formMenuPrincipal.ActualizarListaEnRichTextBox(this.formMenuPrincipal.listaDeLibros, this.formMenuPrincipal.richTextBoxLibros);
             }
         }
 
@@ -82,7 +104,14 @@ namespace TP4
 
                         try
                         {
-                            conexion.ModificarLibro(this.libro); 
+                            if (conexion.ProbarConexion())
+                            { 
+                                conexion.ModificarLibro(this.libro); 
+                            }
+                            else
+                            {
+                                SerializadorJson<List<Libro>>.Escribir(this.formMenuPrincipal.listaDeLibros, "Serializado_Libros");
+                            }
                         }
                         catch (Exception ex)
                         {
@@ -102,7 +131,14 @@ namespace TP4
                         {
                             try
                             {
-                                conexion.AgregarLibro(lib);
+                                if (conexion.ProbarConexion())
+                                {
+                                    conexion.AgregarLibro(lib);
+                                }
+                                else
+                                {
+                                    SerializadorJson<List<Libro>>.Escribir(this.formMenuPrincipal.listaDeLibros, "Serializado_Libros");
+                                }
                             }
                             catch (Exception ex)
                             {
@@ -173,7 +209,7 @@ namespace TP4
 
         bool IValidadorDeCampos.ValidarCantidadNumeros()
         {
-            if (this.tb_codigo.Text.Length == 4 && this.tb_cantidadPaginas.Text.Length >= 2 && this.tb_cantidadPaginas.Text.Length <= 4)
+            if (this.tb_titulo.Text.CantidadCaracteresValida() && this.tb_autor.Text.CantidadCaracteresValida() && this.tb_codigo.Text.Length == 4 && this.tb_cantidadPaginas.Text.Length >= 2 && this.tb_cantidadPaginas.Text.Length <= 4)
             {
                 return true;
             }

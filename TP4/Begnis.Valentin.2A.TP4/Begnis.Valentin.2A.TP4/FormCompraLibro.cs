@@ -48,14 +48,8 @@ namespace TP4
                 {
                     this.cliente.Importe += libroComprado.Precio;
 
-                    this.formMenuPrincipal.richTextBoxClientes.Text = "";
+                    this.formMenuPrincipal.ActualizarListaEnRichTextBox(this.formMenuPrincipal.libreria.ListaClientes, this.formMenuPrincipal.richTextBoxClientes);
 
-                    foreach (Cliente item in this.formMenuPrincipal.libreria.ListaClientes)
-                    {
-                        this.formMenuPrincipal.richTextBoxClientes.AppendText(item.ToString());
-                    }
-
-                    // generar ticket
                     StringBuilder sb = new StringBuilder();
 
                     sb.AppendLine("---------------FACTURA---------------");

@@ -1,0 +1,14 @@
+---------------FACTURA---------------
+NOMBRE: Juan Rodriguez
+DNI: 23584222
+PRODUCTO: One Hundred Years of Solitude, Gabriel Garcia Marquez
+CODIGO: 1003
+IMPORTE: $2456
+
+---------------FACTURA---------------
+NOMBRE: Juan Rodriguez
+DNI: 23584222
+PRODUCTO: In Search of Lost Time, Marcel Proust
+CODIGO: 1000
+IMPORTE: $1500
+

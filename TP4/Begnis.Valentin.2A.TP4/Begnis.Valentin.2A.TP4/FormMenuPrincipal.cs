@@ -17,12 +17,7 @@ namespace TP4
         public Libreria libreria;
         public List<Libro> listaDeLibros;
         public List<Cliente> listaDeClientes;
-
-        public delegate int DelegadoOrdenarAlfabeticamente(string x, string y);
-        public delegate int DelegadoOrdenarMenorAMayor(float x, float y);
-
-        DelegadoOrdenarAlfabeticamente delegadoOrdenarAlfabeticamente = CriterioOrdenamiento.OrdenarAlfabeticamente;
-        DelegadoOrdenarMenorAMayor delegadoOrdenarMenorAMayor = CriterioOrdenamiento.OrdenarMenorAMayor;
+        public Label labelOrdenando;
 
         public form_menuPrincipal()
         {
@@ -30,16 +25,25 @@ namespace TP4
             this.libreria = new Libreria();
             this.richTextBoxLibros = this.rtb_libros;
             this.richTextBoxClientes = this.rtb_clientes;
+            this.labelOrdenando = this.lbl_ordenando;
         }
 
         private void form_menuPrincipal_Load(object sender, EventArgs e)
         {
             try
             {
-                Task cargarLibrosSQL = Task.Run(TareaCargarLibros); // TODO : 1 - Creo que esto no va en el Load
-                Task cargarClientesJson = Task.Run(TareaCargaClientes);
+                ConexionBD conexion = new ConexionBD();
 
-                Task.WaitAll(cargarLibrosSQL, cargarClientesJson);
+                if (conexion.ProbarConexion())
+                {
+                    this.listaDeLibros = conexion.ObtenerListaLibros();
+                }
+                else
+                {
+                    this.listaDeLibros = SerializadorJson<List<Libro>>.Leer("Serializado_Libros");
+                }
+
+                this.listaDeClientes = SerializadorJson<List<Cliente>>.Leer("Serializado_Clientes");
 
                 this.ActualizarListaEnRichTextBox(this.listaDeLibros, this.rtb_libros);
                 this.ActualizarListaEnRichTextBox(this.listaDeClientes, this.rtb_clientes);
@@ -51,17 +55,6 @@ namespace TP4
             {
                 MessageBox.Show("Ocurrio un problema al cargar el archivo", "Error: carga de archivo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
-
-        public void TareaCargarLibros()
-        {
-            ConexionBD conexion = new ConexionBD();
-            this.listaDeLibros = conexion.ObtenerListaLibros();
-        }
-
-        public void TareaCargaClientes()
-        {
-            this.listaDeClientes = SerializadorJson<List<Cliente>>.Leer("Serializado_Clientes");
         }
 
         public void ActualizarListaEnRichTextBox<T>(List<T> lista, RichTextBox richTextBox)
@@ -149,24 +142,6 @@ namespace TP4
         {
             form_ingresarDni formDni = new form_ingresarDni(this, EOpcionCliente.GenerarCompra);
             formDni.ShowDialog();
-        }
-
-        private void porAutorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.listaDeLibros.Sort((x, y) => delegadoOrdenarAlfabeticamente(x.Autor, y.Autor));
-            this.ActualizarListaEnRichTextBox(this.listaDeLibros, this.rtb_libros);
-        }
-
-        private void porTituloToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.listaDeLibros.Sort((x, y) => delegadoOrdenarAlfabeticamente(x.Titulo, y.Titulo));
-            this.ActualizarListaEnRichTextBox(this.listaDeLibros, this.rtb_libros);
-        }
-
-        private void porPrecioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.listaDeLibros.Sort((x, y) => delegadoOrdenarMenorAMayor(x.Precio, y.Precio));
-            this.ActualizarListaEnRichTextBox(this.listaDeLibros, this.rtb_libros);
         }
     }
 }
